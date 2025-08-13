@@ -74,13 +74,6 @@
         <scope>test</scope>
     </dependency>
 
-    <!-- HAPUS YANG INI:
-    <dependency>
-        <groupId>javax.persistence</groupId>
-        <artifactId>javax.persistence-api</artifactId>
-        <version>2.2</version>
-    </dependency>
-    -->
 </dependencies>
 
 	<build>
