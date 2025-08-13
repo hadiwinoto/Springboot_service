@@ -1,8 +1,7 @@
-package com.example.demo.controller;
+package com.example.demo.controller.employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -45,8 +44,6 @@ public class EmployeeController {
 		return ResponseEntity.ok(employee);
 	}
 
-	// update data
-
 	@PutMapping("/employees/{id}")
 	public ResponseEntity<Employee> updateEmployeeByID(@PathVariable Long id, @RequestBody Employee employeeDetails) {
 		Employee employee = employeeRepository.findById(id)
@@ -64,6 +61,7 @@ public class EmployeeController {
 
 		return ResponseEntity.ok(updatedEmployee);
 	}
+	
 	@DeleteMapping("/employees/{id}")
 	public ResponseEntity<Map<String, Boolean>> deleteEmployee(@PathVariable Long id) {
 
@@ -75,7 +73,5 @@ public class EmployeeController {
 		Map<String, Boolean> response = new HashMap<>();
 		response.put("Deleted", Boolean.TRUE);
 		return ResponseEntity.ok(response);
-
 	}
-
 }
