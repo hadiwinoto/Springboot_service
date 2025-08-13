@@ -8,13 +8,13 @@ import org.springframework.http.ResponseEntity;
 import com.example.demo.service.UserService;
 
 @RestController
-@RequestMapping("/api/users")
+@RequestMapping("/api")
 public class UserController {
 
     @Autowired
     private UserService userService;
 
-    @PostMapping("/register")
+    @PostMapping("/users/register")
     public ResponseEntity<?> registerUser(@RequestBody User user) {
         User savedUser = userService.registerUser(user);
 
@@ -25,7 +25,7 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/users/{id}")
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         return userService.getUserById(id)
             .map(user -> {

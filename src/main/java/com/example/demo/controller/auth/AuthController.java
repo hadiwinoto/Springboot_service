@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/api/auth")
+@RequestMapping("/api")
 public class AuthController {
 
     @Autowired
@@ -27,9 +27,9 @@ public class AuthController {
 
     public record AuthenticationRequest(String username, String password) {}
 
-    public record AuthenticationResponse(String jwt) {}
+    public record AuthenticationResponse(String token) {}
 
-    @PostMapping("/login")
+    @PostMapping("/auth/login")
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest request) throws Exception {
 
         try {
@@ -40,9 +40,9 @@ public class AuthController {
         
         final UserDetails userDetails = customUserDetailsService.loadUserByUsername(request.username());
 
-        final String jwt = jwtUtil.generateToken(userDetails);
+        final String token = jwtUtil.generateToken(userDetails);
 
-        return ResponseEntity.ok(new AuthenticationResponse(jwt));
+        return ResponseEntity.ok(new AuthenticationResponse(token));
     }
 
 }

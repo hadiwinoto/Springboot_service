@@ -17,8 +17,8 @@ public class Employee {
     // -----------------------------------------------------------------
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "attendance_id")
-    private Integer attendanceId;
+    @Column(name = "pk_employee_id")
+    private Integer pkemployeeId;
 
     // -----------------------------------------------------------------
     // Kolom utama (tipe data sesuaikan dengan definisi DB)
@@ -216,11 +216,11 @@ public class Employee {
     // Getters & Setters
     // -----------------------------------------------------------------
     public Integer getAttendanceId() {
-        return attendanceId;
+        return pkemployeeId;
     }
 
-    public void setAttendanceId(Integer attendanceId) {
-        this.attendanceId = attendanceId;
+    public void setPkemployeeId(Integer pkemployeeId) {
+        this.pkemployeeId = pkemployeeId;
     }
 
     public String getEmployeeNo() {
