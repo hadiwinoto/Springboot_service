@@ -29,7 +29,8 @@ public class EmployeeController {
 
 	@GetMapping("/employees")
 	public List<Employee> getAllEmployees() {
-		return employeeRepository.findAll();
+		// return employeeRepository.findAll(); versi repository
+		 return employeeRepository.findAllNative();
 	}
 
 	@PostMapping("/employees")

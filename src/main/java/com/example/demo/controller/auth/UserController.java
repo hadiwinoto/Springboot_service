@@ -29,7 +29,7 @@ public class UserController {
     public ResponseEntity<User> getUserById(@PathVariable Long id) {
         return userService.getUserById(id)
             .map(user -> {
-                user.setPassword(null); // Hide password in response
+                user.setPassword(null);
                 return ResponseEntity.ok(user);
             })
             .orElse(ResponseEntity.notFound().build());

@@ -23,10 +23,8 @@ public class AuthService {
         Authentication auth = authManager.authenticate(
                 new UsernamePasswordAuthenticationToken(username, rawPassword));
 
-        // Ambil UserDetails dari Authentication
         UserDetails userDetails = (UserDetails) auth.getPrincipal();
 
-        // Generate token pakai UserDetails
         return jwtUtil.generateToken(userDetails);
     }
 
@@ -37,7 +35,7 @@ public class AuthService {
         User user = User.builder()
                 .username(username)
                 .password(passwordEncoder.encode(rawPassword))
-                .role("USER") // pastikan field 'role' ada di entity User
+                .role("USER")
                 .build();
         return userRepo.save(user);
     }
